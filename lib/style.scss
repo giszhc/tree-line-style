@@ -1,0 +1,76 @@
+// 普通树组件连接线样式
+.normal-tree-line-style {
+	/* 1. 定义变量：方便全局或动态修改 */
+	--tree-line-color: #DCDFE6; // 连线颜色
+	--tree-line-width: 1px; // 线宽
+	--tree-line-style: dashed; // 线条类型: dashed / solid
+	--tree-node-padding: 16px; // 缩进距离
+	--tree-horizontal-line-width: 20px; // 横线长度
+	--tree-line-top: 18px; // 横线距离节点顶部距离
+	--tree-line-left-offset: -2px; // 连接线左偏移
+	--tree-no-icon-placeholder-size: 4px; // 叶子节点（无子节点）的图标占位优化
+
+	// 基础样式重置
+	.el-tree-node__content {
+		padding-left: 0 !important;
+	}
+
+	// 子节点容器
+	.el-tree-node__children {
+		padding-left: var(--tree-node-padding);
+
+		.el-tree-node {
+			position: relative;
+			padding-left: var(--tree-node-padding);
+
+			// 公共连线属性
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				left: var(--tree-line-left-offset); // 连接线左偏移
+				right: auto;
+				border-width: var(--tree-line-width);
+			}
+
+			// 垂直连线 (Vertical Line)
+			&::before {
+				border-left: var(--tree-line-width) var(--tree-line-style) var(--tree-line-color);
+				bottom: 0;
+				height: 100%;
+				top: -1px; // 向上延伸以连接父节点
+				width: 1px;
+			}
+
+			// 水平连线 (Horizontal Line)
+			&::after {
+				border-top: var(--tree-line-width) var(--tree-line-style) var(--tree-line-color);
+				height: 0;
+				top: var(--tree-line-top);
+				width: var(--tree-horizontal-line-width);
+			}
+
+			// 修正：最后一个子节点的垂直线不应向下延伸
+			&:last-child::before {
+				height: calc(var(--tree-line-top) + 2px); // 刚好连接到最后一根横线
+			}
+		}
+	}
+
+	// 根节点不需要连线
+	.el-tree > .el-tree-node {
+		&::before {
+			border-left: none;
+		}
+
+		&::after {
+			border-top: none;
+		}
+	}
+
+	// 叶子节点（无子节点）的图标占位优化
+	.el-tree-node__expand-icon.is-leaf {
+		max-width: var(--tree-no-icon-placeholder-size);
+		padding: 0 !important;
+	}
+}

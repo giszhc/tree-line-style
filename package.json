@@ -1,0 +1,24 @@
+{
+  "name": "@giszhc/tree-line-style",
+  "version": "0.0.1",
+  "type": "module",
+  "description": "一个扩展El-Tree树组件连接线样式库",
+  "main": "./dist/style.css",
+  "style": "./dist/style.css",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": "./dist/style.css",
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "vite build && del dist\\*.js",
+    "prepublishOnly": "pnpm run build"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
