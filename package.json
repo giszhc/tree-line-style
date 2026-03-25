@@ -12,6 +12,22 @@
     ".": "./dist/style.css",
     "./style.css": "./dist/style.css"
   },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giszhc/tree-line-style.git"
+  },
+  "bugs": {
+    "url": "https://github.com/giszhc/tree-line-style/issues"
+  },
+  "keywords": [
+    "Element Plus",
+    "El-Tree",
+    "el-tree"
+  ],
+  "homepage": "https://github.com/giszhc/tree-line-style#readme",
   "scripts": {
     "build": "vite build && del dist\\*.js",
     "prepublishOnly": "pnpm run build"
