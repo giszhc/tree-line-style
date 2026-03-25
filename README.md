@@ -39,7 +39,6 @@ yarn add @giszhc/tree-line-style
   :data="data" 
 />
 ```
-```
 
 ### 可用的 CSS 变量
 
@@ -86,4 +85,4 @@ MIT License
 
 ---
 
-Made with ❤️ for Element Plus users
+用心打造，专为 Element Plus 用户而作 ❤️
